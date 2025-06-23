@@ -100,12 +100,12 @@
                                     <span>Profile</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/pages/settings" class="flex items-center px-4 py-2">
+                            {{-- <li>
+                                {{-- <a href="/pages/settings" class="flex items-center px-4 py-2">
                                     <span class="iconify w-4 h-4 mr-2" data-icon="solar:settings-bold-duotone"></span>
                                     <span>Settings</span>
                                 </a>
-                            </li>
+                            </li> --}} 
                             <li>
                                 <form method="POST" action="{{ route('logout') }}" class="w-full flex p-0">
                                     @csrf

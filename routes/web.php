@@ -64,6 +64,18 @@ Route::middleware('auth')->group(function () {
     })->name('notifications.markAsRead');
 });
 
+// Director-only user management
+Route::middleware(['auth'])->prefix('users')->name('users.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\UserManagementController::class, 'index'])->name('index');
+    Route::get('/create', [\App\Http\Controllers\UserManagementController::class, 'create'])->name('create');
+    Route::post('/', [\App\Http\Controllers\UserManagementController::class, 'store'])->name('store');
+    Route::get('/{user}/edit', [\App\Http\Controllers\UserManagementController::class, 'edit'])->name('edit');
+    Route::patch('/{user}', [\App\Http\Controllers\UserManagementController::class, 'update'])->name('update');
+    Route::patch('/{user}/change-role', [\App\Http\Controllers\UserManagementController::class, 'changeRole'])->name('changeRole');
+    Route::patch('/{user}/change-team', [\App\Http\Controllers\UserManagementController::class, 'changeTeam'])->name('changeTeam');
+    Route::delete('/{user}', [\App\Http\Controllers\UserManagementController::class, 'destroy'])->name('destroy');
+});
+
 Route::get('/email', function () {
     Mail::to('kniptodati@gmail.com')->send(new TestMail());
     return 'Email has been sent!';

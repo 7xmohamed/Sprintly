@@ -26,9 +26,7 @@ class AddMemberModal extends Component
 
     public function loadAvailableMembers()
     {
-        $this->availableMembers = User::whereHas('userDepartments', function($query) {
-                $query->where('department_id', $this->project->department_id);
-            })
+        $this->availableMembers = User::where('department_id', $this->project->department_id)
             ->whereNotIn('id', function($query) {
                 $query->select('user_id')
                     ->from('project_members')

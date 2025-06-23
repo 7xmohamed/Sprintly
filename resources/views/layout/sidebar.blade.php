@@ -1,7 +1,7 @@
 <div id="layout-sidebar" class="bg-base-100 border-r border-base-200 flex flex-col h-screen w-64 fixed left-0 top-0">
     <div class="p-4 border-b border-base-200">
         <a class="flex items-center justify-center" href="/" data-discover="true">
-            <img alt="logo-dark" class="hidden h-8 dark:inline" src="/images/logo/logo-dark.svg" />
+            <img alt="logo-dark" class="hidden h-8 dark:inline" src="http://127.0.0.1:8000/storage/images/logo/s.png" />
             <img alt="logo-light" class="h-8 dark:hidden" src="/images/logo/logo-light.svg" />
         </a>
     </div>
@@ -27,6 +27,12 @@
                         <span class="iconify w-5 h-5 mr-3" data-icon="solar:calendar-bold-duotone"></span>
                         <span>Calendar</span>
                     </a>
+                        @if(auth()->user() && auth()->user()->role === 'director')
+                            <a href="{{ route('users.index') }}" class="flex items-center px-3 py-2 text-sm font-medium rounded-lg hover:bg-base-200 transition-colors group {{ request()->is('users') ? 'bg-primary/10 text-primary' : 'text-base-content/80' }}">
+                                <span class="iconify w-5 h-5 mr-3" data-icon="solar:users-group-rounded-bold-duotone"></span>
+                                <span>Users Management</span>
+                            </a>
+                        @endif
                 </div>
             </div>
 
