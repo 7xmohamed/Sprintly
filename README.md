@@ -1,61 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Sprintly
 
-## About Laravel
+**Enterprise-Grade Project Management & Team Collaboration**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com)
+[![Livewire](https://img.shields.io/badge/Livewire-3.x-4E56A6?style=flat-square&logo=livewire&logoColor=white)](https://livewire.laravel.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[Features](#key-features) • [Tech Stack](#technology-stack) • [Installation](#getting-started) • [Architecture](#system-architecture) • [Contributing](#contributing)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+</div>
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Overview
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Sprintly** is a robust, monolithic project management solution designed to bridge the gap between simple to-do lists and complex enterprise tools. Built on the **Laravel ecosystem**, it leverages **Livewire** for dynamic, SPA-like interactivity without the complexity of a separate frontend codebase.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Designed for modern teams, Sprintly integrates task management, real-time communication, and performance reporting into a single, cohesive platform.
 
-## Laravel Sponsors
+## Key Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### ⚡ Operational Efficiency
+- **Dynamic Dashboard**: Real-time overview of pending tasks, project velocity, and personal workload.
+- **Advanced Task Management**: Support for repetitive tasks, sub-tasks, priority levels, and granular status tracking.
+- **Smart Calendar**: Integrated `FullCalendar` view for visual resource planning and deadline tracking.
 
-### Premium Partners
+### 🤝 Collaboration & Communication
+- **Real-Time Project Chat**: WebSockets-powered (Pusher/Reverb) messaging contextually embedded within projects.
+- **Activity Streams**: Granular audit logs for task updates, status changes, and comments.
+- **Team Topology**: Department-based user organization with role-based access control (RBAC).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+### � Reporting & Analytics
+- **Daily Standup Reports**: Structured daily reporting workflow linking completed tasks to user performance.
+- **Notification System**: Omni-channel alerts (Database & Email) for critical updates and reminders.
+
+## Technology Stack
+
+Sprintly is built on a modern, opinionated stack optimized for rapid development and maintainability.
+
+| Layer | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | **Laravel 12** | Core application logic, routing, and DI container. |
+| **Interaction** | **Livewire 3** | Server-driven reactive components for dynamic UI. |
+| **Frontend** | **Alpine.js** | Lightweight JavaScript for client-side state management. |
+| **Styling** | **Tailwind CSS** | Utility-first CSS framework for bespoke design. |
+| **UI Kit** | **WireUI** | Pre-built accessible components. |
+| **Database** | **MySQL / MariaDB** | Relational data persistence. |
+| **Real-Time** | **Pusher** | WebSockets for live chat and notifications. |
+
+## System Architecture
+
+### Domain Entities
+The application is structured around several core domain aggregates:
+- **Organization**: `Users`, `Departments`, `Roles`
+- **Work Management**: `Projects`, `Tasks`, `RepetitiveTasks`, `TaskAssignments`
+- **Communication**: `ProjectsChatMessage`, `TaskComments`, `Notifications`
+- **Accountability**: `DailyReports`, `ReportTasks`
+
+## Getting Started
+
+### Prerequisites
+- PHP 8.2+
+- Composer
+- Node.js & NPM
+- MySQL 8.0+
+
+### Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/sprintly.git
+   cd sprintly
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
+
+3. **Environment Configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Update `.env` with your database and Pusher credentials.*
+
+4. **Database Setup**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Build Assets & Run**
+   ```bash
+   # Terminal A
+   npm run dev
+
+   # Terminal B
+   php artisan serve
+   ```
+
+## Testing
+
+Run the full test suite to ensure system integrity.
+
+```bash
+php artisan test
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+We enforce a standard code style and commit convention. Please review our definition of done before submitting PRs.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+<div align="center">
+    <sub>Built with ❤️ by 7xmohamed & AnassA7</sub>
+</div>
